@@ -21,6 +21,7 @@ export default class  extends Component {
                 <Text style={{fontSize: 14,fontWeight: 'bold'}}>{this.props.name}</Text>
                 <Text style={{fontSize:12}}>{this.props.price}Rs</Text>
                 <StarRating
+                    fullStarColor={'red'}
                     disable={true}
                     maxStars={5}
                     rating={this.props.rating}

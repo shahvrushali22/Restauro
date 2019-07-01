@@ -23,93 +23,7 @@
           NewRestaurants:[],
         }
       }
-      async componentWillMount() {
-        this.fetchCuisines();
-        this.fetchNewRestaurants();
-      }
 
-      async fetchCuisines(){
-
-        let response = await fetch('https://developers.zomato.com/api/v2.1/cuisines?city_id=20', {
-          method: 'GET',
-          headers: new Headers({
-            'Accept': 'application/json',
-            'user-key': '71d62dd3edfeccf28415b09d1b7faee9'
-          }),
-        });
-        let responseJson = await response.json();
-
-        // console.log(responseJson.cuisines);
-        //let cuisines = this.state.cuisines;
-        this.setState({
-
-          cuisines: responseJson.cuisines,
-
-
-        });
-        // console.log(this.state.cuisines);
-      }
-      async fetchNewRestaurants(){
-
-        let response = await fetch('https://developers.zomato.com/api/v2.1/search?entity_id=1&entity_type=city&start=1&count=4', {
-          method: 'GET',
-          headers: new Headers({
-            'Accept': 'application/json',
-            'user-key': '71d62dd3edfeccf28415b09d1b7faee9'
-          }),
-        });
-        let responseJson = await response.json();
-
-
-        //let cuisines = this.state.cuisines;
-        this.setState({
-
-          NewRestaurants: responseJson.restaurants,
-
-
-        });
-        // console.log(this.state.cuisines);
-      }
-      renderCuisines({item}){
-        // console.log(item.cuisine.cuisine_name);
-        return (
-
-            <CategoryCard imageUri = {require('../assets/chinese.jpg')} name={item.cuisine.cuisine_name}/>
-
-        );
-      }
-      renderNewRestaurants({item}){
-
-        return (
-            <View style={styles.imageNewRestaurantWrapper}>
-              <Image  style={styles.imageNewRestaurant}  source={{uri: item.restaurant.thumb}}/>
-            </View>
-
-
-        );
-      }
-      renderCard(){
-        return (
-            <FlatList
-                horizontal={true}
-                showsHorizontalScrollIndicator={false}
-                  data={this.state.cuisines}
-                  //Here the data is wrapped within a property with key item
-                  renderItem={this.renderCuisines.bind(this)}>
-
-           </FlatList>
-        )}
-      renderImage(){
-        return (
-            <FlatList
-                horizontal={true}
-                showsHorizontalScrollIndicator={false}
-                data={this.state.NewRestaurants}
-                //Here the data is wrapped within a property with key item
-                renderItem={this.renderNewRestaurants.bind(this)}>
-
-            </FlatList>
-        )}
 
       render() {
         return (
@@ -132,16 +46,18 @@
 
                   </View>
                     <View style={styles.card}>
-                      {this.renderCard()}
 
-                        {/*<CategoryCard imageUri = {require('../assets/home.jpg')} name={"Home"}/>*/}
-                        {/*<CategoryCard imageUri = {require('../assets/experiences.jpg')} name={"Experiences"}/>*/}
-                        {/*<CategoryCard imageUri = {require('../assets/restaurant.jpg')} name={"Restaurants"}/>*/}
-                        {/*<CategoryCard imageUri = {require('../assets/home.jpg')} name={"Home"}/>*/}
-                        {/*<CategoryCard imageUri = {require('../assets/experiences.jpg')} name={"Experiences"}/>*/}
-                        {/*<CategoryCard imageUri = {require('../assets/restaurant.jpg')} name={"Restaurants"}/>*/}
-                        {/*<CategoryCard imageUri = {require('../assets/experiences.jpg')} name={"Experiences"}/>*/}
-                        {/*<CategoryCard imageUri = {require('../assets/home.jpg')} name={"Home"}/>*/}
+                     <ScrollView
+                         horizontal={true}
+                         showsHorizontalScrollIndicator={false}
+                     >
+                       <CategoryCard imageUri = {require('../assets/cuisine1.jpg')} name={"Chinese"}/>
+                       <CategoryCard imageUri = {require('../assets/restaurant4.jpg')} name={"Italian"}/>
+                       <CategoryCard imageUri = {require('../assets/cuisine3.jpg')} name={"Mexican"}/>
+                       <CategoryCard imageUri = {require('../assets/restaurant3.jpg')} name={"North Indian"}/>
+
+                     </ScrollView>
+
 
 
                     </View>
@@ -150,8 +66,23 @@
                       <Text style={{fontSize : 18,color: '#b63838'}}>A new Selection of restaurants verified for quality and ambience</Text>
 
 
-                      {/*{this.renderImage()}*/}
+                    <ScrollView
+                        horizontal={true}
+                        showsHorizontalScrollIndicator={false}>
+                      <View style={styles.imageNewRestaurantWrapper}>
+                        <Image  style={styles.imageNewRestaurant}  source={require("../assets/restaurant1.jpg")}/>
+                      </View>
+                      <View style={styles.imageNewRestaurantWrapper}>
+                        <Image  style={styles.imageNewRestaurant}  source={require("../assets/restaurant2.jpg")}/>
+                      </View>
+                      <View style={styles.imageNewRestaurantWrapper}>
+                        <Image  style={styles.imageNewRestaurant}  source={require("../assets/restaurant3.jpg")}/>
+                      </View>
+                      <View style={styles.imageNewRestaurantWrapper}>
+                        <Image  style={styles.imageNewRestaurant}  source={require("../assets/restaurant4.jpg")}/>
+                      </View>
 
+                    </ScrollView>
 
 
 
@@ -160,25 +91,25 @@
                   <View style={{marginTop: 40}}>
                     <Text style={styles.gridHeading}>Restaurants around the city</Text>
                     <View style={styles.gridComponentWrapper}>
-                      <HomeGrid imageUri = {require("../assets/home.jpg")}
-                                name={"The Cozy Place"}
-                                type={"PRIVATE ROOM - 2 BEDS"}
+                      <HomeGrid imageUri = {require("../assets/cuisine1.jpg")}
+                                name={"Juno's Pizza"}
+                                type={"Chinese,Beverages"}
                                 price={4000}
-                                rating={4}
+                                rating={3}
                       />
-                      <HomeGrid imageUri = {require("../assets/experiences.jpg")}
-                                name={"The Cozy Place"}
-                                type={"PRIVATE ROOM - 2 BEDS"}
+                      <HomeGrid imageUri = {require("../assets/cuisine2.jpg")}
+                                name={"Tamasha"}
+                                type={"Italian, Mexican"}
                                 price={4000}
-                                rating={4}/>
+                                rating={2}/>
                       <HomeGrid imageUri = {require("../assets/restaurant.jpg")}
-                                name={"The Cozy Place"}
-                                type={"PRIVATE ROOM - 2 BEDS"}
+                                name={"HITCHKI"}
+                                type={"Chinese,North Indian,Chat"}
                                 price={4000}
-                                rating={4}/>
-                      <HomeGrid imageUri = {require("../assets/home.jpg")}
-                                name={"The Cozy Place"}
-                                type={"PRIVATE ROOM - 2 BEDS"}
+                                rating={5}/>
+                      <HomeGrid imageUri = {require("../assets/cuisine3.jpg")}
+                                name={"Vedge"}
+                                type={"Mughlai,American,Asian,SeaFood"}
                                 price={4000}
                                 rating={4}/>
                     </View>
@@ -198,7 +129,7 @@
 
       },
       headerContainer:{
-        height: 100,
+        height: 80,
         backgroundColor: 'white',
         borderBottomWidth: 1,
         borderBottomColor: '#dddddd',
@@ -261,6 +192,7 @@
         borderRadius: 5,
         borderWidth: 1,
         borderColor: '#dddddd',
+        marginLeft: 5,
       },
       imageNewRestaurantWrapper:{
         width: width-40,

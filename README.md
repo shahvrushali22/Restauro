@@ -1,12 +1,12 @@
-##How to use
+## How to use
 
 ````bash
 git clone https://github.com/shahvrushali22/Restauro.git
 ````
 
-##Expo CLI Quickstart
+## Expo CLI Quickstart
 Assuming that you have Node 10+ installed, you can use npm to install the Expo CLI command line utility:
-##Installation
+## Installation
 ````bash
 npm install -g expo-cli
 ````

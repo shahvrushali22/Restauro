@@ -16,6 +16,7 @@ Then run the following command to creae a new project
 expo init Project-Name
 ````
 Then copy all the folders into your Project folder 
+Follow following steps:-
 ````bash
 cd Project-Name
 ````
@@ -29,4 +30,4 @@ Install the Expo client app on your iOS or Android phone and connect to the same
 On Android, use the Expo app to scan the QR code from your terminal to open your project. 
 On iOS, follow on-screen instructions to get a link.
 
-Congratulations! You will successfully run and modify this React Native app.
+Congratulations! Now You will be able to successfully run and modify this React Native app.

@@ -6,10 +6,52 @@ import {createAppContainer,createDrawerNavigator,createStackNavigator,createBott
 import Home from "./screens/Home";
 import Profile from "./screens/Profile";
 import Search from"./screens/Search";
+import Settings from "./screens/Settings";
+import Logout from "./screens/Logout";
 import Icon from 'react-native-vector-icons/Ionicons';
+import RestaurantDetails from "./screens/RestaurantDetails";
+import RestaurantList from "./screens/RestaurantList";
+const ScreensDrawer = createDrawerNavigator({
+  screen1: {
+    screen: Profile,
+    navigationOptions:{
+      drawerLabel: "Profile"
+    }
+  },
+  screen2: {
+    screen: Settings,
+    navigationOptions:{
+      drawerLabel: "Settings"
+    }
+  },
+  screen3: {
+    screen: Logout,
+    navigationOptions:{
+      drawerLabel: "Logout"
+    }
+  },
+
+});
+const HomeStack = createStackNavigator({
+  Home: {
+    screen: Home,
+
+  },
+  RestaurantList: {
+    screen: RestaurantList,
+
+  },
+  RestaurantDetails: {
+    screen: RestaurantDetails,
+
+  },
+
+});
+
+
 const pages = createBottomTabNavigator({
   Explore: {
-    screen: Home,
+    screen: HomeStack,
     navigationOptions: {
       tabBarLabel: 'Home',
       tabBarIcon: ({tintColor}) => (
@@ -28,7 +70,7 @@ const pages = createBottomTabNavigator({
     }
   },
   Profile: {
-    screen: Profile,
+    screen: ScreensDrawer,
     navigationOptions: {
       topBarLabel: 'Profile',
       tabBarIcon: ({tintColor}) => (

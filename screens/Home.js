@@ -13,6 +13,9 @@
     import {MaterialIcons,AntDesign} from "@expo/vector-icons";
     import CategoryCard from "../components/Explore/CategoryCard";
     import HomeGrid from "../components/Explore/HomeGrid";
+    import {getAllCuisines} from "../services/mock/CuisineService";
+    import {getAllRestaurants} from "../services/mock/RestaurantService";
+    // import {getAllRestaurants} from "../services/mock/RestaurantService";
 
     const {height,width} = Dimensions.get('window');
     export default class Home  extends Component {
@@ -20,10 +23,21 @@
         super(props);
         this.state={
           cuisines:[],
-          NewRestaurants:[],
+            restaurants:[],
+
         }
       }
-
+        async componentWillMount() {
+            let cuisines = await getAllCuisines();
+            let restaurants = await getAllRestaurants();
+            //console.log("Restaurants:" + JSON.stringify(restaurants));
+            this.setState({
+                cuisines: cuisines,
+                restaurants: restaurants,
+            });
+            console.log(this.state.cuisines);
+            console.log(this.state.restaurants);
+        }
 
       render() {
         return (
@@ -42,28 +56,28 @@
                 >
                   <View style={styles.findTextContainer}>
                     <Text style={styles.findText}>What can we help you find,<Text style={{color:'#b63838'}}>Vrushali?</Text></Text>
-                    <Text style={{fontSize: 18,fontWeight:'600'}}>Popular cuisines around you <AntDesign name={'arrowright'} size={20}/></Text>
+                    <Text style={{fontSize: 16,fontWeight:'600'}}>Popular cuisines around you <AntDesign name={'arrowright'} size={20}/></Text>
 
                   </View>
                     <View style={styles.card}>
 
-                     <ScrollView
-                         horizontal={true}
-                         showsHorizontalScrollIndicator={false}
-                     >
-                       <CategoryCard imageUri = {require('../assets/cuisine1.jpg')} name={"Chinese"}/>
-                       <CategoryCard imageUri = {require('../assets/restaurant4.jpg')} name={"Italian"}/>
-                       <CategoryCard imageUri = {require('../assets/cuisine3.jpg')} name={"Mexican"}/>
-                       <CategoryCard imageUri = {require('../assets/restaurant3.jpg')} name={"North Indian"}/>
+                        <FlatList data={this.state.cuisines}
+                                  horizontal={true}
+                                  showsHorizontalScrollIndicator={false}
+                                  style={{flex: 1}}
+                                  keyExtractor={(data) => data.id + ""}
+                                  renderItem={({item}) => <CategoryCard  navigation={this.props.navigation} cuisine={item}/>}/>
 
-                     </ScrollView>
+
+
+
 
 
 
                     </View>
                     <View style={styles.introducingTextWrapper}>
                       <Text style={styles.introducingText}>Introducing new Restaurants</Text>
-                      <Text style={{fontSize : 18,color: '#b63838'}}>A new Selection of restaurants verified for quality and ambience</Text>
+                      <Text style={{fontSize : 16,color: '#b63838'}}>A new Selection of restaurants verified for quality and ambience</Text>
 
 
                     <ScrollView
@@ -84,35 +98,16 @@
 
                     </ScrollView>
 
-
-
                     </View>
 
                   <View style={{marginTop: 40}}>
                     <Text style={styles.gridHeading}>Restaurants around the city</Text>
-                    <View style={styles.gridComponentWrapper}>
-                      <HomeGrid imageUri = {require("../assets/cuisine1.jpg")}
-                                name={"Juno's Pizza"}
-                                type={"Chinese,Beverages"}
-                                price={4000}
-                                rating={3}
-                      />
-                      <HomeGrid imageUri = {require("../assets/cuisine2.jpg")}
-                                name={"Tamasha"}
-                                type={"Italian, Mexican"}
-                                price={4000}
-                                rating={2}/>
-                      <HomeGrid imageUri = {require("../assets/restaurant.jpg")}
-                                name={"HITCHKI"}
-                                type={"Chinese,North Indian,Chat"}
-                                price={4000}
-                                rating={5}/>
-                      <HomeGrid imageUri = {require("../assets/cuisine3.jpg")}
-                                name={"Vedge"}
-                                type={"Mughlai,American,Asian,SeaFood"}
-                                price={4000}
-                                rating={4}/>
-                    </View>
+                    <FlatList contentContainerStyle = {styles.gridComponentWrapper}
+                        data={this.state.restaurants}
+                        // numColumns={2}
+                        keyExtractor={(data) => data.id + ""}
+                        renderItem={({item}) => <HomeGrid  navigation={this.props.navigation} restaurant={item}/>}/>
+
                   </View>
                 </ScrollView>
 
@@ -155,7 +150,7 @@
 
       },
       findText:{
-      fontSize: 24,
+      fontSize: 20,
         fontWeight: '700',
         // paddingHorizontal: 20,
         paddingBottom: 10,
@@ -181,7 +176,7 @@
         paddingHorizontal: 20,
       },
       introducingText:{
-        fontSize:24,
+        fontSize:20,
         fontWeight:'700',
       },
       imageNewRestaurant:{
@@ -189,7 +184,7 @@
         width: null,
         height: null,
         resizeMode: 'cover',
-        borderRadius: 5,
+        borderRadius: 10,
         borderWidth: 1,
         borderColor: '#dddddd',
         marginLeft: 5,
@@ -200,7 +195,7 @@
         marginTop: 20
       },
       gridHeading:{
-        fontSize: 24,
+        fontSize: 20,
         fontWeight:'700',
         paddingHorizontal:20
 
@@ -210,6 +205,7 @@
         marginTop: 20,
         flexDirection: 'row',
         flexWrap:'wrap',
+          // numColumns: 2,
         justifyContent: 'space-between',
       },
 

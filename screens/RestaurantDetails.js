@@ -5,9 +5,12 @@ import { View,Text,StyleSheet } from 'react-native';
 // import styles from './styles';
 
 export default class RestaurantDetails  extends Component {
+
   render() {
+    const itemName = this.props.navigation.getParam('itemName', 'NO-NAME');
+
     return (
-        <View style={styles.container}><Text>Hello details</Text></View>
+        <View style={styles.container}><Text>ok</Text></View>
     );
   }
 }

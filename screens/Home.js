@@ -35,8 +35,8 @@
                 cuisines: cuisines,
                 restaurants: restaurants,
             });
-            console.log(this.state.cuisines);
-            console.log(this.state.restaurants);
+            // console.log(this.state.cuisines);
+            // console.log(this.state.restaurants);
         }
 
       render() {

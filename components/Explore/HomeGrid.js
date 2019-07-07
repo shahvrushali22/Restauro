@@ -16,7 +16,7 @@ export default class  extends Component {
             <View style={{flex:1}}>
                 <Image
                     style={{flex:1,width:null,height:null,resizeMode:'cover',borderRadius: 5}}
-                    source={{uri: this.props.restaurant.thumbnail}}></Image>
+                    source={{uri: this.props.restaurant.thumbnail}}/>
             </View>
             <View style={{flex: 1, alignItems: 'flex-start',justifyContent: 'space-around',paddingLeft:10}}>
                 <Text style={{fontSize: 12,color:'#b63838'}}>{this.props.restaurant.cuisines}</Text>

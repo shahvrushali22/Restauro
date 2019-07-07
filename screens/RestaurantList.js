@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 
 import { View,Text,StyleSheet,FlatList,Dimensions,Image,TouchableOpacity } from 'react-native';
 
-import {getAllRestaurants} from "../services/mock/RestaurantService";
+import {getAllRestaurants, getAllRestaurantByCuisine} from "../services/mock/RestaurantService";
 import {Badge,Bubble,Spinner} from 'nachos-ui'
+import {getAllCuisines} from "../services/mock/CuisineService";
 
 // import styles from './styles';
 const {width,height} = Dimensions.get('window');
@@ -13,18 +14,29 @@ export default class RestaurantList extends Component {
     super(props);
     this.state = {
       restaurants: [],
+
     };
   }
   async componentWillMount() {
-    let restaurants = await getAllRestaurants();
-    //console.log("Restaurants:" + JSON.stringify(restaurants));
+
+    const cuisineName = this.props.navigation.getParam('cuisineName', 'NO-NAME');
+
+    let restaurants = await getAllRestaurantByCuisine(cuisineName);
+
     this.setState({
-      restaurants: restaurants
+      restaurants: restaurants,
+
     });
+
+// console.log(this.state.restaurants);
   }
   renderRestaurants({item}){
+
     return (
-        <TouchableOpacity onPress = {() => this.props.navigation.navigate('RestaurantDetails')}>
+
+        <TouchableOpacity onPress = {() => this.props.navigation.navigate('RestaurantDetails',)}>
+
+
           <View style={styles.userContainer}>
             {/*<Header navigation ={this.props.navigation}/>*/}
             <Image style={styles.profilePicture} source={{uri: item.thumbnail}}/>

@@ -5,7 +5,7 @@ const CUISINES = [{
 
 },{
     id: 2,
-    name: "Itlaian",
+    name: "Italian",
     image: "http://www.gnbsgy.org/wp-content/uploads/Restaurant.jpg",
 
 
@@ -29,7 +29,7 @@ const CUISINES = [{
 
 },{
     id: 6,
-    name: "Mughlai",
+    name: "Mughalai",
     image: "http://www.gnbsgy.org/wp-content/uploads/Restaurant.jpg",
 
 

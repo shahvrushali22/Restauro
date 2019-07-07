@@ -6,9 +6,13 @@ import {Icon} from "react-native-elements";
 // import styles from './styles';
 
 export default class CategoryCard  extends Component{
+
     render() {
         return (
-            <TouchableOpacity onPress = {() => this.props.navigation.navigate('RestaurantList')} >
+
+
+
+<TouchableOpacity onPress = {() => this.props.navigation.navigate('RestaurantList',{cuisineName: this.props.cuisine.name},)} >
                 <View style={styles.horizontalScrollCard}>
                     <View style={{flex:2}}>
                         <Image

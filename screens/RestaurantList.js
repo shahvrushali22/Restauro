@@ -34,7 +34,7 @@ export default class RestaurantList extends Component {
 
     return (
 
-        <TouchableOpacity onPress = {() => this.props.navigation.navigate('RestaurantDetails',)}>
+        <TouchableOpacity onPress = {() => this.props.navigation.navigate('RestaurantDetails',{ item : item })}>
 
 
           <View style={styles.userContainer}>

@@ -11,6 +11,7 @@ import Logout from "./screens/Logout";
 import Icon from 'react-native-vector-icons/Ionicons';
 import RestaurantDetails from "./screens/RestaurantDetails";
 import RestaurantList from "./screens/RestaurantList";
+import {AntDesign} from "@expo/vector-icons";
 const ScreensDrawer = createDrawerNavigator({
   screen1: {
     screen: Profile,
@@ -36,6 +37,7 @@ const HomeStack = createStackNavigator({
   Home: {
     screen: Home,
 
+
   },
   RestaurantList: {
     screen: RestaurantList,
@@ -43,10 +45,16 @@ const HomeStack = createStackNavigator({
   },
   RestaurantDetails: {
     screen: RestaurantDetails,
-
-  },
-
+    navigationOptions: {
+      // headerTransparent: true,
+      // headerLeft: <AntDesign style={{ color: "#fff",
+      //   paddingLeft: 20,
+      //   fontWeight: "700",}}  name="caretleft" size={32} />
+    },
+  }
 });
+
+
 
 
 const pages = createBottomTabNavigator({
@@ -74,7 +82,7 @@ const pages = createBottomTabNavigator({
     navigationOptions: {
       topBarLabel: 'Profile',
       tabBarIcon: ({tintColor}) => (
-          <Icon name="ios-person" color={tintColor} size={24}/>
+          <Icon name="ios-person" color={tintColor} size={30}/>
       )
     }
   },
@@ -121,6 +129,10 @@ const styles = StyleSheet.create({
     //justifyContent: 'flex-start',
     //backgroundColor: '#F7F7F7',
   },
+  goBackIcon:{
+
+
+  }
 
 
 

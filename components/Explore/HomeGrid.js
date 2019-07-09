@@ -12,7 +12,7 @@ export default class  extends Component {
 
     return (
 
-        <TouchableOpacity style={styles.gridComponent} onPress={()=> this.props.navigation.navigate('RestaurantDetails')}>
+        <TouchableOpacity style={styles.gridComponent} onPress={()=> this.props.navigation.navigate('RestaurantDetails',{ item : this.props.restaurant })}>
             <View style={{flex:1}}>
                 <Image
                     style={{flex:1,width:null,height:null,resizeMode:'cover',borderRadius: 5}}

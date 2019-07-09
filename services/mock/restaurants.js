@@ -5,12 +5,12 @@ const RESTAURANTS_LIST = [{
     rating :  4,
     price: 2000,
     gallery: [],
-    Address: "",
+    Address: "702,Runwal Anthurium, Mulund -West",
     city: "Mumbai",
     country: "India",
-    cuisines: "Italian,Chinese",
+    cuisines: "Italian, Chinese",
     isNew: true,
-    contactNo: ["23456789","456789012"],
+    contactNo: "23456789 , 456789012",
 }, {
     id: 2,
     name: "HITCHKI",
@@ -22,7 +22,7 @@ const RESTAURANTS_LIST = [{
     Address: "",
     city: "Mumbai",
     country: "India",
-    cuisines: "Mexican,Italian,North Indian",
+    cuisines: "Mexican, Italian, North Indian",
     isNew: true,
     contactNo: ["23456789","456789012"],
 }, {
@@ -35,7 +35,7 @@ const RESTAURANTS_LIST = [{
     Address: "",
     city: "Mumbai",
     country: "India",
-    cuisines: "Mexican,Italian,South Indian",
+    cuisines: "Mexican, Italian, South Indian",
     isNew: true,
     contactNo: ["23456789","456789012"],
 }, {
@@ -48,7 +48,7 @@ const RESTAURANTS_LIST = [{
     Address: "",
     city: "Mumbai",
     country: "India",
-    cuisines: "Mexican,Italian,Mughalai",
+    cuisines: "Mexican, Italian, Mughalai",
     isNew: true,
     contactNo: ["23456789","456789012"],
 }, {
@@ -61,7 +61,7 @@ const RESTAURANTS_LIST = [{
     Address: "",
     city: "Mumbai",
     country: "India",
-    cuisines: "Mexican,Italian",
+    cuisines: "Mexican, Italian",
     isNew: true,
     contactNo: ["23456789","456789012"],
 }, {
@@ -74,7 +74,7 @@ const RESTAURANTS_LIST = [{
     Address: "",
     city: "Mumbai",
     country: "India",
-    cuisines: "Mexican,Italian,South Indian,North Indian,Mughalai",
+    cuisines: "Mexican, Italian, South Indian, North Indian, Mughalai",
     isNew: true,
     contactNo: ["23456789","456789012"],
 }, ];
